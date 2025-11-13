@@ -17,6 +17,8 @@ function render(state = store.home) {
     ${footer()}
   `;
 }
+router .updatePageLinks();
+
 router.hooks({
   // We pass in the `done` function to the before hook handler to allow the function to tell Navigo we are finished with the before hook.
   // The `match` parameter is the data that is passed from Navigo to the before hook handler with details about the route being accessed.
@@ -27,10 +29,26 @@ router.hooks({
     // Add a switch case statement to handle multiple routes
     switch (view) {
       // Add a case for each view that needs data from an API
+      case "home":
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?appid=${process.env.OPEN_WEATHER_MAP_API_KEY}&units=imperial&q=st louis`)
+        .then(response => {console.log("Weather Response.data", response.data);
+          store.home.weather = {
+        city: response.data.name,
+        temp: response.data.main.temp,
+        feelsLike: response.data.main.feels_like,
+        description: response.data.weather[0].main
+      };
+          done();
+        })
+        .catch((error) => {
+            console.log("It puked", error);
+            done();
+        });
+        break;
       case "pizza":
         // New Axios get request utilizing already made environment variable
         axios
-          .get(`https://sc-pizza-api.onrender.com/pizzas`)
+          .get(`${process.env.PIZZA_PLACE_API_URL}/pizzas`)
           .then(response => {
             // We need to store the response to the state, in the next step but in the meantime let's see what it looks like so that we know what to store from the response.
             console.log("response", response);

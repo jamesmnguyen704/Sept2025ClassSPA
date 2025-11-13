@@ -1,5 +1,6 @@
 #jumbotron {
-  background: url(assets/img/wavey-grid.jpg) center center no-repeat;  background-size: cover;
+  background: url(assets/img/wavey-grid.jpg) center center no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +64,8 @@ footer {
   text-align: left;
 }
 
-#pizzas td,th {
+#pizzas td,
+#pizzas th {
   width: 25%;
 }
 
