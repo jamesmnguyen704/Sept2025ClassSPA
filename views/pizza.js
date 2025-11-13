@@ -1,6 +1,6 @@
-import html from "html-literal";
-
+import html from "html-literal"
 export default state => html`
+
   <table id="pizzas">
     <tr>
       <th>Crust</th>
