@@ -80,10 +80,6 @@ router.hooks({
     });
   }
 });
-// router.on("/", () => render())
-// router.on("/pizza", () => render(store.pizza))
-// router.on("/order", () => render(store.order))
-// router.resolve();
 
 
 router.on({
