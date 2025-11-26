@@ -1,5 +1,5 @@
 import { Router } from  "express"; // importing express router to create a route
-import Pizza from "../models/Pizza.js";  // import pizza model
+import Pizza from "../models/pizza.js";  // import pizza model
 
 const router = Router(); // create a mini express application all my pizza routes will go here
 // Create pizza route
